@@ -4,10 +4,21 @@ var fs = require('fs');
 var log4js = require('log4js');
 var request = require('request');
 log4js.configure({
-    appenders: [
-        { type: 'console' },
-        { type: 'file', filename: 'logs/bot.log' }
-    ]
+  appenders: {
+      console: {
+          type: 'console'
+      },
+      default: {
+          type: 'file',
+          filename: 'logs/cf_'+time()+'.log'
+      }
+  },
+  categories: {
+      default: {
+          appenders: ['default', 'console'],
+          level: 'trace'
+      }
+  }
 });
 var options = {
   key: fs.readFileSync('/var/www/socket/certs/key.pem'),
