@@ -1,0 +1,49 @@
+.flips {
+  margin-top:15px;
+}
+.flips .profile {
+  margin:0;
+}
+.flips .profile img {
+  height:50px;
+  margin:0;
+  display:inline-block;
+}
+.flips .profile img + img {
+  margin-left:5px;
+}
+.flips p {
+  margin:0;
+}
+.flips p img {
+  height:50px;
+  float:left;
+}
+.flips p img:last-child {
+  margin-right:5px;
+}
+.flips .btn {
+  margin:9px 0;
+}
+.flips .btn + .btn {
+  margin-left:9px;
+}
+.flips small {
+  display:block;
+  font-size:12px;
+}
+.flips .text-left p {
+  line-height:50px;
+}
+.watchFlip {
+  margin:0 -30px;
+}
+.bottle {
+  width:50px;
+  height:50px;
+  margin:0 auto;
+}
+.admin-users #sellItem,
+.admin-users #withdrawItem {
+  display:none;
+}

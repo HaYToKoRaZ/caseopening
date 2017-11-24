@@ -1,0 +1,99 @@
+# --------------------------------------------
+# Load the index.php first and foremost
+# --------------------------------------------
+
+DirectoryIndex index.php
+
+<IfModule mod_headers.c>
+	Header unset ETag
+	FileETag None
+</IfModule>
+
+# --------------------------------------------
+# Deflate Minified Files
+# --------------------------------------------
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE image/x-icon
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/rss+xml
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/x-javascript
+	<FilesMatch "\.(php|css|js)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
+# --------------------------------------------
+# Expires Caching
+# --------------------------------------------
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 2 months"
+	ExpiresByType image/x-icon "access plus 1 month"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType image/gif "access plus 1 month"
+	ExpiresByType image/jpg "access plus 1 month"
+	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType image/ico "access plus 1 month"
+	ExpiresByType application/pdf "access plus 1 month"
+	ExpiresByType audio/x-wav "access plus 1 month"
+	ExpiresByType audio/mpeg "access plus 1 month"
+	ExpiresByType video/mpeg "access plus 1 month"
+	ExpiresByType video/mp4 "access plus 1 month"
+	ExpiresByType video/quicktime "access plus 1 month"
+	ExpiresByType video/x-ms-wmv "access plus 1 month"
+	ExpiresByType application/x-shockwave-flash "access 1 month"
+	ExpiresByType text/css "access plus 1 month"
+	ExpiresByType text/javascript "access plus 1 month"
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+
+	# ----------------------------------------
+	# No directory listings anywhere
+	# ----------------------------------------
+	IndexIgnore *
+	# Options +FollowSymLinks All -Indexes
+
+	# ----------------------------------------
+	# Hide php inside views & layouts & includes
+	# ----------------------------------------
+	RewriteRule ^views/(.*\.php) index.php [L]
+	RewriteRule ^layouts/(.*\.php) index.php [L]
+	RewriteRule ^includes/(.*\.php) index.php [L]
+	RewriteRule ^controllers/(.*\.php) index.php [L]
+
+	RewriteRule ^humans.txt humans.txt [L]
+	RewriteRule ^robots.txt robots.txt [L]
+
+	RewriteRule ^css/(.*\.css) 	minify/combine.php?type=css&files=$1 [L]
+	RewriteRule ^js/(.*\.js) 	minify/combine.php?type=javascript&files=$1 [L]
+
+	# ----------------------------------------
+	# Force https connection and www
+	# ----------------------------------------
+	#RewriteCond %{HTTPS} off
+	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	#RewriteCond %{HTTPS} on
+	#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+	#RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+	# ----------------------------------------
+	# Route all requests to our framework
+	# ----------------------------------------
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_URI} !^/db(/|$)
+	RewriteRule . index.php [L]
+
+</IfModule>

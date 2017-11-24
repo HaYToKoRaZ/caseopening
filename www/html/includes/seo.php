@@ -1,0 +1,21 @@
+<?php
+  $seo = array(
+    'cases' => array('Nanoflip | CSGO Case Opening Site'),
+    'case' => array('Nanoflip | Invalid Case'),
+    'casecreator' => array('Nanoflip | Case Creator'),
+    'casebrowser' => array('Nanoflip | Browse User Created Cases'),
+    'earn' => array('Nanoflip | Earn Credits'),
+    'inventory' => array('Nanoflip | Inventory'),
+    'coinflip' => array('Nanoflip | Let a Coin Decide Your Fate'),
+    'tradeup' => array('Nanoflip | Trade Up Contracts'),
+    'affiliates' => array('Nanoflip | Affiliates'),
+    'tos' => array('Nanoflip | Terms of Service'),
+    'sitemap' => array('Nanoflip | Sitemap'),
+    'admin' => array('Nanoflip | Admin'),
+    'admin/prices' => array('Nanoflip | Update Items'),
+    'admin/referrers' => array('Nanoflip | Top Referrers'),
+    'admin/withdraws' => array('Nanoflip | View Withdraws'),
+    'admin/deposits' => array('Nanoflip | View Deposits'),
+    'admin/coupon' => array('Nanoflip | View Coupons'),
+    'admin/users' => array('Nanoflip | View Users'),
+  );
