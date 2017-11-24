@@ -8,9 +8,7 @@ if(isUser()) {
   $account = menuItem('inventory', 'archive', 'Inventory');
   $account .= menuItem('affiliates', 'star', 'Affiliates');
   $account .= '<li><a data-toggle="modal" data-target="#addFunds"><i class="fa fa-usd" aria-hidden="true"></i> Deposit</a></li>';
-  // $account .= menuItem('earn', 'money', 'Earn Credits');
   if(isAdmin()) {
-    $games .= menuItem('coinflip', 'adjust', 'Coinflip');
     $other .= menuItem('admin', 'lock', 'Admin');
   }
 } else {
