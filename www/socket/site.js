@@ -1,9 +1,14 @@
 var app = require('express')();
 var mysql = require('mysql');
 var fs = require('fs');
-
+var log4js = require('log4js');
 var request = require('request');
-
+log4js.configure({
+    appenders: [
+        { type: 'console' },
+        { type: 'file', filename: 'logs/bot.log' }
+    ]
+});
 var options = {
   key: fs.readFileSync('/var/www/socket/certs/key.pem'),
   cert: fs.readFileSync('/var/www/socket/certs/cert.pem'),
@@ -169,99 +174,11 @@ function notification(info, delay, message) {
   return {info: info, delay: delay, message: message};
 }
 
-
-/*function getUserSockets(id) {
-  var userSockets = [];
-  for(var i in users) {
-    if(users[i].id == id) {
-      userSockets.push(i);
-    }
-  }
-  return userSockets;
-}
-
-function updateUser(id, key, value) {
-  for(var i in users) {
-    if(users[i].id == id) users[i][key] = value;
-  }
-}
-
-function banUser(id) {
-  messages = [];
-  pool.getConnection(function(err,connection) {
-    connection.query('UPDATE `users` SET `ban`=1 WHERE `id`=?', [id], function(err, results) {
-      connection.release();
-      updateUser(id, 'ban', 1);
-      sendToUser(id, 'You have been banned from chat.', 'notification', 'error', false);
-      io.emit('chat message', '<script id="ban">$("#chat li.user'+id+'").remove();$("#ban").remove();</script>');
-    });
-  });
-}
-
-function unbanUser(id) {
-  pool.getConnection(function(err,connection) {
-    connection.query('UPDATE `users` SET `ban`=0 WHERE `id`=?', [id], function(err, results) {
-      connection.release();
-      updateUser(id, 'ban', 0);
-      sendToUser(id, 'You have been unbanned from chat.', 'notification', 'success', false);
-    });
-  });
-}
-
-function setSlowmode(seconds) {
-  slowmode = seconds;
-  if(seconds > 5) {
-    msg = notification('warning', false, 'Chat has been set to slow mode. You can only send 1 message per '+seconds+' second(s).');
-  } else {
-    msg = notification('success', false, 'Slow mode has been turned off.');
-  }
-  io.emit('notification', msg);
-}
-
-function getSlowmode() {
-  return slowmode;
-}
-
-function clearChat() {
-  io.emit('chat message', '<script id="clearChat">$("#chat li").remove();$("#clearChat").remove();</script>');
-  messages = [];
-}
-
-function sendToUser(id, msg, type, info, delay) {
-  var userSockets = getUserSockets(id);
-  if(type == 'notification') {
-    msg = notification(info, delay, msg);
-  }
-  for(var i in userSockets) {
-    if(io.sockets.connected[userSockets[i]] != undefined) {
-      io.sockets.connected[userSockets[i]].emit(type, msg);
-    }
-  }
-}
-
-function sendToBot(type, data) {
-  for(var i in io.sockets.connected) {
-    if(io.sockets.connected[i].handshake.query.bot == 'MrGamingCollege69') {
-      io.sockets.connected[i].emit(type, data);
-    }
-  }
-}
-
-function addUserMessage(id, msg, type) {
-  pool.getConnection(function(err,connection) {
-    connection.query('INSERT INTO `messages` (userid, message, type) VALUES (?, ?, ?)', [id, msg, type], function(err, results) {
-      connection.release();
-    });
-  });
-}
-
-function guidGenerator() {
-  return (Math.random()*Math.pow(36,4) << 0).toString(36) + (Math.random()*Math.pow(36,4) << 0).toString(36);
-}
-
-function htmlEntities(str) {
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}*/
+log.warn('=================================');
+log.warn('======= Server started! =========');
+log.warn('=== Server created by TUZ1K ====');
+log.warn('== STEAM: http://steamcommunity.com/id/tuz1k/ ==');
+log.warn('=================================');
 
 https.listen(8443, function() {
   console.log('listening on *:8443');
