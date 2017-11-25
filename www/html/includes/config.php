@@ -12,13 +12,13 @@
 	define('LAYOUT_PATH', 'layouts/');
 	define('DEBUG', false);
 
-	$cryptoPrivate = '14491AAcj2ehBitcoin77BTCPRVqkk2YgQK2G287rmB1hAQAxa';
-	$cryptoPublic = '14491AAcj2ehBitcoin77BTCPUBekGRjOQxRjlAQ9JOPko6DBc';
+	$cryptoPrivate = '';
+	$cryptoPublic = '';
 	define('CRYPTOBOX_PRIVATE_KEYS', $cryptoPrivate);
 
 	date_default_timezone_set('America/Indianapolis');
 
-	$steamauth['apikey'] = 'CA91D901EDEE57AB57F86C3735E8E8F5';
+	$steamauth['apikey'] = '';
 
 	$maxCases = 10;
 	$minFlipValue = 2;
