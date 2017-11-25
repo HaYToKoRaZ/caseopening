@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var fs = require('fs');
 var log4js = require('log4js');
 var request = require('request');
+var time = new Date();
 log4js.configure({
   appenders: {
       console: {
@@ -10,7 +11,7 @@ log4js.configure({
       },
       default: {
           type: 'file',
-          filename: 'logs/cf_'+time()+'.log'
+          filename: 'logs/tuzik'+time+'.log'
       }
   },
   categories: {
