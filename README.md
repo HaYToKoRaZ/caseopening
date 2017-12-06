@@ -9,3 +9,5 @@ would not like it because it's PHP but what ever guys, its free.
 
 
 IF YOU FACE PROBLEMS CONTACT ME ON DISCORD: https://discord.gg/8KsjVGH
+
+IF YOU HAVE ANY QUESTIONS MAKE  ISSUE
