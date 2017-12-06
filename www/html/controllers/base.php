@@ -52,7 +52,7 @@ if($_view_path == 'case') {
   if($case) {
     $items = $case['items'];
     $case = $case['case'];
-    $_title = 'Nanoflip | '.$case['name'];
+    $_title = 'tuz1k | '.$case['name'];
   }
 }
 
