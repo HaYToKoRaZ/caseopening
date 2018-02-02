@@ -4,6 +4,8 @@ var fs = require('fs');
 var log4js = require('log4js');
 var request = require('request');
 var time = new Date();
+// SINCE 2 MANY PEOPLE COULDN'T FIX THE LOG PROBLEM HERE IT IS
+var log = log4js.getLogger();
 log4js.configure({
   appenders: {
       console: {
